@@ -1,0 +1,13 @@
+{
+  "name": "insomnia-plugin-csrf-urldecode",
+  "version": "1.0.0",
+  "main": "plugin.js",
+  
+  "insomnia": {                    
+    "name": "csrf-urldecode",
+    "description": "Fix problem with url encoded csrf token"
+  },
+  
+  "dependencies": [],
+  "devDependencies": []
+}
