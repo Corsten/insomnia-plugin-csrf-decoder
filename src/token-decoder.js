@@ -7,15 +7,15 @@ module.exports = async function (context) {
         return;
     }
 
-    context.request.setHeader('X-CSRF-Token', `${csrf_token}`);
-    console.log(`[header] Set X-CSRF-Token header: ${csrf_token}`);
+    if (csrf_token) {
+        context.request.setHeader('X-CSRF-Token', `${csrf_token}`);
+        console.log(`[header] Set X-CSRF-Token header: ${csrf_token}`);
+    }
 };
 
 async function decodeCsrfToken(context) {    
     const csrf_token = context.request.getEnvironmentVariable('xsrf_token');
-    console.log('marat');
-    console.log(csrf_token)
-    if (!csrf_token.length || csrf_token.includes("request 'cookie'")) {
+    if (csrf_token === 'undefined' || !csrf_token.length || csrf_token.includes("request 'cookie'")) {
         return '';
     } else {
         let decoded_csrf_token = decodeURIComponent(csrf_token);
